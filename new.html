@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+
+<html lang="en">
+    <head>
+        <title>Ball Buyers | Home</title>
+        <meta charset="UTF-8">
+        <link rel="stylesheet" href="css/global.css">
+        <link rel="stylesheet" href="css/new.css">
+    </head>
+    <body>
+        <header>
+            <a href="index.html"><img id="BB-logo" src="images/bb-logo.png" alt="Ball Buyers logo"></a>
+            <form>            
+                <input type="text" id="search" placeholder="Search our catalog...">
+            </form>
+            <nav>
+                <ul>
+                    <li><a href="items.html">Browse</a></li>
+                    <li><a href="new.html">Sell</a></li>
+                    <li><a>Sign Up</a></li>
+                    <li class="login"><a>Log In</a></li>
+                </ul>
+            </nav>
+        </header>
+        <main>
+            <h2>Sell with Ball Buyers</h2>
+            <article class="new">
+                <div class="new-text">
+                    <img src="images/bb-logo.png" alt="Ball Buyers logo">
+                    <p>Thank you for selling with Ball Buyers! We pride ourselves on making the baseball buying and selling process as easy and trustworthy as possible.</p>
+                </div>
+                <form action="#">
+                    <label for="title">Auction Name</label>
+                    <input type="text" name="title" id="title">
+                    <label for="condition">Condition</label>
+                    <select name="condition" id="condition">
+                        <option value="perfect">Perfect</option>
+                        <option value="great">Great</option>
+                        <option value="good">Good</option>
+                        <option value="fair">Fair</option>
+                        <option value="bad">Bad</option>
+                    </select>
+                    <label for="price">Sale Price</label>
+                    <input type="number" id="price" title="price" min="0" step="0.01" required>
+                    <label for="description">Description</label>
+                    <textarea id="description" name="description" rows="4" required></textarea>
+                    <label for="seller">Seller</label>
+                    <input type="text" id="seller" title="seller" required>
+                    <label for="image">Image</label>
+                    <input type="file" id="image" name="image" accept=".png, .jpg, .jpeg" required>
+                    <button type="submit" id="submit">Submit</button>
+                </form>
+            </article>
+        </main>
+        <footer>
+            <p>&copy; Ball Buyers</p>
+            <ul>
+                <li><a><img src="images/square-facebook-brands-solid.png" alt="Facebook logo"></a></li>
+                <li><a><img src="images/square-x-twitter-brands-solid.png" alt="X logo"></a></li>
+                <li><a href="https://linkedin.com/in/jakob-c-olsen"><img src="images/linkedin-brands-solid.png" alt="LinkedIn logo"></a></li>
+                <li><a href="https://github.com/jakobcolsen/"><img src="images/square-github-brands-solid.png" alt="Github logo"></a></li>
+            </ul>
+        </footer>
+    </body>
+</html>

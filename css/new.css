@@ -1,0 +1,183 @@
+main {
+    background-image: linear-gradient(rgba(255, 255, 255, 0.8), rgba(255, 255, 255, 0.8)), url("../images/bb-no-money.jpg");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+h2 {
+    text-align: center;
+    padding: 1rem;
+    font-size: 40px;
+}
+
+.new {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 10rem;
+    border-radius: 25px 25px 0 0;
+    padding: 3rem 5rem;
+    background-color: white;
+    width: fit-content;
+    margin: 0 auto;
+}
+
+.new-text {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 2rem;
+    width: min-content;
+}
+
+.new-text img {
+    width: 300px;
+}
+
+.new-text p {
+    font-size: 24px;
+    text-align: center;
+    width: 500px;
+}
+
+.new form {
+    display: grid;
+    grid-template-areas: 
+            "titlelabel title"
+            "conditionlabel condition"
+            "pricelabel price"
+            "descriptionlabel description"
+            "sellerlabel seller"
+            "imagelabel image"
+            ". button";
+    grid-template-columns: fit-content 1fr;
+    gap: 2rem;
+    width: fit-content;
+}
+
+label[for="title"] {
+    grid-area: titlelabel;
+}
+
+label[for="condition"] {
+    grid-area: conditionlabel;
+}
+
+label[for="price"] {
+    grid-area: pricelabel;
+}
+
+label[for="description"] {
+    grid-area: descriptionlabel;
+}
+
+label[for="seller"] {
+    grid-area: sellerlabel;
+}
+
+label[for="image"] {
+    grid-area: imagelabel;
+}
+
+#title {
+    grid-area: title;
+}
+
+#condition {
+    grid-area: condition;
+    background-color: white;
+}
+
+#price {
+    grid-area: price;
+}
+
+#description {
+    grid-area: description;
+}
+
+#seller {
+    grid-area: seller;
+}
+
+#image {
+    grid-area: image;
+    background-color: white;
+}
+
+label {
+    font-size: 20px;
+    align-self: center;
+}
+
+.new form input, .new form textarea, .new form select {
+    border-radius: 10px;
+    border: 2px solid var(--primary-color);
+    font-size: 20px;
+    padding: 0.5rem 1rem;
+}
+
+.new form button {
+    grid-area: button;
+    padding: 1rem 3rem;
+    border-radius: 100px;
+    font-size: 24px;
+    color: white;
+    background-color: var(--primary-color);
+    border: 3px solid var(--primary-color);
+}
+
+.new form button:hover {
+    background-color: white;
+    color: var(--primary-color);
+}
+
+@media screen and (max-width: 800px) {
+    .new {
+        padding: 3rem 1rem;
+        gap: 3rem;
+    }
+
+    .new-text img {
+        width: 200px;
+    }
+
+    .new-text p {
+        width: 300px;
+    }
+
+    .new form {
+        grid-template-areas: 
+            "titlelabel"
+            "title"
+            "conditionlabel"
+            "condition"
+            "pricelabel"
+            "price"
+            "descriptionlabel"
+            "description"
+            "sellerlabel"
+            "seller"
+            "imagelabel"
+            "image"
+            "button";
+        grid-template-columns: fit-content;
+        gap: 0.5rem;
+    }
+
+    label {
+        font-size: 16px;
+    }
+
+    .new form input, .new form textarea, .new form select {
+        font-size: 16px;
+    }
+
+    .new form button {
+        padding: 0.5rem 1rem;
+        font-size: 16px;
+    }
+}

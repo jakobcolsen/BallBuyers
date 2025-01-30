@@ -1,0 +1,170 @@
+main {
+    background-image: linear-gradient(rgba(255, 255, 255, 0.8), rgba(255, 255, 255, 0.8)), url("../images/bb-bg-new.jpg");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+h2 {
+    text-align: center;
+    padding: 1rem;
+    font-size: 40px;
+}
+
+.item {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: top;
+    gap: 2rem;
+    border-radius: 25px;
+    padding: 3rem 5rem;
+    background-color: white;
+    width: fit-content;
+    margin: 0 auto;
+}
+
+.item img {
+    height: 400px;
+    border-radius: 25px;
+}
+
+.item-information {
+    display: grid;
+    grid-template-areas: 
+            "title title title"
+            "seller condition offers"
+            "price price price"
+            "description description description"
+            "buttons buttons buttons";
+    grid-template-columns: min-content fit-content 1fr;
+    max-width: 600px;
+}
+
+.item-title {
+    grid-area: title;
+    font-size: 30px;
+    font-weight: bold;
+}
+
+.item-condition {
+    grid-area: condition;
+    color: rgba(0, 0, 0, 0.7);
+    font-size: 20px;
+    padding-left: 1rem;
+    width: 200px;
+}
+
+.item-offers {
+    grid-area: offers;
+    color: rgba(0, 0, 0, 0.7);
+    font-size: 20px;
+}
+
+.item-price {
+    grid-area: price;
+    font-size: 42px;
+    color: blue;
+}
+
+.item-seller {
+    grid-area: seller;
+    font-size: 20px;
+    min-width: 200px;
+}
+
+.item-description {
+    grid-area: description;
+    color: rgba(0, 0, 0, 0.7);
+    font-size: 20px;
+}
+
+.buttons {
+    grid-area: buttons;
+}
+
+.edit {
+    padding: 1rem 2rem;
+    border-radius: 25px;
+    font-size: 20px;
+    color: white;
+    background-color: var(--primary-color);
+    border: 3px solid var(--primary-color);
+}
+
+.edit:hover {
+    background-color: white;
+    color: var(--primary-color);
+}
+
+.delete {
+    padding: 1rem 2rem;
+    border-radius: 25px;
+    font-size: 20px;
+    color: var(--primary-color);
+    background-color: white;
+    border: 3px solid var(--primary-color);
+}
+
+.delete:hover {
+    background-color: var(--primary-color);
+    color: white;
+}
+
+.browse {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 3rem 0;
+}
+
+.browse h3 {
+    margin: 1rem 0;
+    font-size: 30px;
+    text-align: center;
+}
+
+.browse button {
+    padding: 1rem 3rem;
+    border-radius: 100px;
+    font-size: 24px;
+    color: white;
+    background-color: var(--primary-color);
+    border: 3px solid var(--primary-color);
+}
+
+.browse button:hover {
+    background-color: white;
+    color: var(--primary-color);
+}
+
+@media screen and (max-width: 800px) {
+    .item-information {
+        grid-template-areas: 
+            "title"
+            "seller"
+            "condition"
+            "offers"
+            "price"
+            "description"
+            "buttons";
+        grid-template-columns: 1fr;
+    }
+
+    .item img {
+        height: 300px;
+    }
+
+    .item-condition {
+        padding-left: 0;
+    }
+
+    .buttons {
+        margin-top: 1rem;
+    }
+
+    .edit, .delete {
+        padding: 0.5rem 1rem;
+    }
+}
