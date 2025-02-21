@@ -1,27 +1,4 @@
-<!DOCTYPE html>
-
-<html lang="en">
-    <head>
-        <title>Ball Buyers | Home</title>
-        <meta charset="UTF-8">
-        <link rel="stylesheet" href="css/global.css">
-        <link rel="stylesheet" href="css/items.css">
-    </head>
-    <body>
-        <header>
-            <a href="index.html"><img id="BB-logo" src="images/bb-logo.png" alt="Ball Buyers logo"></a>
-            <form>            
-                <input type="text" id="search" placeholder="Search our catalog...">
-            </form>
-            <nav>
-                <ul>
-                    <li><a href="items.html">Browse</a></li>
-                    <li><a href="new.html">Sell</a></li>
-                    <li><a>Sign Up</a></li>
-                    <li class="login"><a>Log In</a></li>
-                </ul>
-            </nav>
-        </header>
+<%- include("../partials/header.ejs") %>
         <main>
             <h2>Catalog</h2>
             <div class="item-card-container">
@@ -74,14 +51,4 @@
                 </div>
             </div>
         </main>
-        <footer>
-            <p>&copy; Ball Buyers</p>
-            <ul>
-                <li><a><img src="images/square-facebook-brands-solid.png" alt="Facebook logo"></a></li>
-                <li><a><img src="images/square-x-twitter-brands-solid.png" alt="X logo"></a></li>
-                <li><a href="https://linkedin.com/in/jakob-c-olsen"><img src="images/linkedin-brands-solid.png" alt="LinkedIn logo"></a></li>
-                <li><a href="https://github.com/jakobcolsen/"><img src="images/square-github-brands-solid.png" alt="Github logo"></a></li>
-            </ul>
-        </footer>
-    </body>
-</html>
+<%- include("../partials/footer.ejs") %>
