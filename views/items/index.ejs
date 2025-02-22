@@ -1,5 +1,5 @@
 <%- include("../partials/header.ejs") %>
-        <link rel="stylesheet" href="css/items.css">
+        <link rel="stylesheet" href="/css/items.css">
         <main>
             <% if (items.length > 0) { %>
                 <h2>Catalog</h2>
@@ -14,14 +14,14 @@
                         </div></a>
                     <% }); %>
                     <div class="catalog-end">
-                        <img src="images/bb-logo.png" alt="Ball Buyers logo">
+                        <img src="/images/bb-logo.png" alt="Ball Buyers logo">
                         <h3>Want to see your items here?</h3>
                         <button>Sell with Ball Buyers</button>
                     </div>
                 </div>
             <% } else { %>
                 <div class="catalog-end center">
-                    <img src="images/bb-logo.png" alt="Ball Buyers logo">
+                    <img src="/images/bb-logo.png" alt="Ball Buyers logo">
                     <h3>There are no items currently in our catalog, want to be the first?</h3>
                     <button>Sell with Ball Buyers</button>
                 </div>

@@ -1,16 +1,16 @@
 <%- include("../partials/header.ejs") %>
+        <link rel="stylesheet" href="/css/item.css">
         <main>
-            <h2>Item</h2>
+            <h2>View Item</h2>
             <article class="item">
-                <img src="images/BB_WillieMays.jpeg" alt="Willie Mays 1938 Signed Baseball">
+                <img src="<%= item.image %>" alt="<%= item.title %>"">
                 <div class="item-information">
-                    <p class="item-title">Willie Mays 1938 Signed Baseball</p>
-                    <p class="item-seller">Sold by: Jakob Olsen</p>
-                    <p class="item-condition">Great Condition</p>
-                    <p class="item-offers">0 offers</p>
-                    <p class="item-price">$1200.00</p>
-                    <p class="item-description">Authenticated 1938 baseball signed by Willie Mays! Kept in great condition, no restoration work has been done to the ball.</p>
-                    <div class="buttons">
+                    <p class="item-title"><%= item.title %></p>
+                    <p class="item-seller">Sold by: <%= item.seller %></p>
+                    <p class="item-condition"><%= item.condition %> Condition</p>
+                    <p class="item-offers"><%= item.offers %> offers</p>
+                    <p class="item-price">$<%= item.price %></p>
+                    <p class="item-description"><%= item.details %></p>
                         <button class="edit">Edit</button>
                         <button class="delete">Delete</button>
                     </div>
@@ -21,4 +21,4 @@
                 <button>Browse the Catalog</button>
             </div>
         </main>
-<%- include("../partials/header.ejs") %>
+<%- include("../partials/footer.ejs") %>

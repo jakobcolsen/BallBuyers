@@ -18,7 +18,12 @@ exports.create = (req, res) => {
 
 // Show item by id
 exports.show = (req, res) => {
-    res.send("Show item by id");
+    let item = model.findById(req.params.id);
+    if (!item) {
+        res.send("404"); //TODO err
+        return;
+    }
+    res.render("./items/item", { item });
 }
 
 // Edit item by id

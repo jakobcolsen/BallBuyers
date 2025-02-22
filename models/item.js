@@ -8,7 +8,7 @@ const items = [
         condition: "Great",
         price: 1200.00,
         details: "Authenticated 1938 baseball signed by Willie Mays! Kept in great condition, no restoration work has been done to the ball.",
-        image: "images/BB_WillieMays.jpeg",
+        image: "/images/BB_WillieMays.jpeg",
         offers: 0,
         active: true
     },
@@ -19,7 +19,7 @@ const items = [
         condition: "Good",
         price: 1535.00,
         details: "1999 NYY Team Signed Baseball. Authenticated.",
-        image: "images/bb-nyy-team-1999.jpg",
+        image: "/images/bb-nyy-team-1999.jpg",
         offers: 0,
         active: true
     },
@@ -30,7 +30,7 @@ const items = [
         condition: "Perfect",
         price: 987.99,
         details: "Authentic Daniel Norris signed baseball. Kept in perfect condition.",
-        image: "images/bb-danielnorris.jpg",
+        image: "/images/bb-danielnorris.jpg",
         offers: 0,
         active: true
     },
@@ -41,7 +41,7 @@ const items = [
         condition: "Great",
         price: "780.00",
         details: "Mickey Mantle autographed baseball. Authenticated.",
-        image: "images/bb-mickeymantle.jpg",
+        image: "/images/bb-mickeymantle.jpg",
         offers: 0,
         active: true
     },
@@ -52,7 +52,7 @@ const items = [
         condition: "Perfect",
         price: 1800.00,
         details: "Pete Rose \"I'm Sorry I Bet on Baseball\" Autographed Baseball. Authenticated.",
-        image: "images/bb-peterose.jpg",
+        image: "/images/bb-peterose.jpg",
         offers: 0,
         active: true
     },
@@ -63,7 +63,7 @@ const items = [
         condition: "Fair",
         price: 610.00,
         details: "Hank Aaron signed baseball. Authenticated.",
-        image: "images/bb-hankaaron.jpg",
+        image: "/images/bb-hankaaron.jpg",
         offers: 0,
         active: true
     }
