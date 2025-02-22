@@ -1,5 +1,6 @@
 const express = require("express");
 const morgan = require("morgan");
+const itemRouter = require("./routes/itemRoutes");
 
 const app = express();
 let port = 3000;
@@ -15,6 +16,8 @@ app.use(morgan("tiny"));
 app.get("/", (req, res) => {
     res.render("index");
 });
+
+app.use("/items", itemRouter);
 
 // Start server
 app.listen(port, hostname, () => {
