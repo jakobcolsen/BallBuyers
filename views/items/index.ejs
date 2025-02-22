@@ -1,0 +1,30 @@
+<%- include("../partials/header.ejs") %>
+        <link rel="stylesheet" href="css/items.css">
+        <main>
+            <% if (items.length > 0) { %>
+                <h2>Catalog</h2>
+                <div class="item-card-container">
+                    <% items.forEach(item => { %>
+                        <a href="/items/<%= item.id %>"><div class="card">
+                            <img src="<%= item.image %>" class="card-image" alt="<%= item.title %>">
+                            <p class="card-title"><%= item.title %></p>
+                            <p class="card-condition"><%= item.condition %></p>
+                            <p class="card-price">$<%= item.price %></p>
+                            <p class="card-offers"><%= item.offers %> offers</p>
+                        </div></a>
+                    <% }); %>
+                    <div class="catalog-end">
+                        <img src="images/bb-logo.png" alt="Ball Buyers logo">
+                        <h3>Want to see your items here?</h3>
+                        <button>Sell with Ball Buyers</button>
+                    </div>
+                </div>
+            <% } else { %>
+                <div class="catalog-end center">
+                    <img src="images/bb-logo.png" alt="Ball Buyers logo">
+                    <h3>There are no items currently in our catalog, want to be the first?</h3>
+                    <button>Sell with Ball Buyers</button>
+                </div>
+            <% } %>
+        </main>
+<%- include("../partials/footer.ejs") %>

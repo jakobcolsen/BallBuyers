@@ -104,3 +104,7 @@ a {
     background-color: white;
     color: var(--primary-color);
 }
+
+.center {
+    margin: 10rem auto;
+}

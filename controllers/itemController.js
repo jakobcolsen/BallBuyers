@@ -2,7 +2,8 @@ const model = require("../models/item");
 
 // Get all items
 exports.index = (req, res) => {
-    res.send("All items");
+    let items = model.findAllActive();
+    res.render("./items/index", { items });
 }
 
 // New item form
