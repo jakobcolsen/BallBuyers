@@ -17,7 +17,7 @@ app.get("/", (req, res) => {
     res.render("index");
 });
 
-app.use("/items/", itemRouter);
+app.use("/items", itemRouter);
 
 // Start server
 app.listen(port, hostname, () => {

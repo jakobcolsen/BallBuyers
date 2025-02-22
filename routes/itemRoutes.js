@@ -1,5 +1,6 @@
 const express = require("express");
 const controller = require("../controllers/itemController");
+const { upload } = require("../middleware/fileUpload");
 const router = express.Router();
 
 // Get all items
@@ -9,7 +10,7 @@ router.get("/", controller.index);
 router.get("/new", controller.new);
 
 // Create new item
-router.post("/", controller.create);
+router.post("/", upload, controller.create);
 
 // Show item by id
 router.get("/:id", controller.show);

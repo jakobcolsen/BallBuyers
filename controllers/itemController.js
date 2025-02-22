@@ -8,12 +8,15 @@ exports.index = (req, res) => {
 
 // New item form
 exports.new = (req, res) => {
-    res.send("New item form");
+    res.render("./items/new");
 }
 
 // Create new item
 exports.create = (req, res) => {
-    res.send("Create new item");
+    let item = req.body;
+    item.image = "/images/uploads/" + req.file.filename;
+    item = model.create(item);
+    res.redirect("/items");
 }
 
 // Show item by id
