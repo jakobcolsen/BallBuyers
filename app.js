@@ -1,5 +1,6 @@
 const express = require("express");
 const morgan = require("morgan");
+const methodOverride = require("method-override");
 const itemRouter = require("./routes/itemRoutes");
 
 const app = express();
@@ -11,6 +12,7 @@ app.set("view engine", "ejs");
 app.use(express.static("public"));
 app.use(express.urlencoded({ extended: true }));
 app.use(morgan("tiny"));
+app.use(methodOverride("_method"));
 
 // Routing
 app.get("/", (req, res) => {

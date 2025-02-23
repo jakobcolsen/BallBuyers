@@ -11,8 +11,10 @@
                     <p class="item-offers"><%= item.offers %> offers</p>
                     <p class="item-price">$<%= item.price %></p>
                     <p class="item-description"><%= item.details %></p>
-                        <button class="edit">Edit</button>
-                        <button class="delete">Delete</button>
+                    <form>
+                        <button type="submit" class="edit" formmethod="GET" formaction="/items/<%= item.id %>/edit">Edit</button>
+                        <button type="submit" class="delete" formmethod="POST" formaction="/items/<%= item.id %>?_method=DELETE">Delete</button>
+                    </form>
                     </div>
                 </div>
             </article>

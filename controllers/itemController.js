@@ -31,15 +31,28 @@ exports.show = (req, res) => {
 
 // Edit item by id
 exports.edit = (req, res) => {
-    res.send("Edit item by id");
+    let item = model.findById(req.params.id);
+    if (!item) {
+        res.send("404"); //TODO err
+        return;
+    }
+    res.render("./items/edit", { item })
 }
 
 // Update item by id
 exports.update = (req, res) => {
-    res.send("Update item by id");
+    let item = req.body;
+    if (req.file !== undefined) item.image = "/images/uploads/" + req.file.filename;
+    if (!model.updateById(req.params.id, item)) {
+        res.send("404"); // TODO err
+    }
+    res.redirect(`/items/${req.params.id}`);
 }
 
 // Delete item by id
 exports.delete = (req, res) => {
-    res.send("Delete item by id");
+    if (!model.deleteById(req.params.id)) {
+        res.send("404"); // TODO err
+    }
+    res.redirect("/items");
 }

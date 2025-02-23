@@ -101,7 +101,7 @@ exports.updateById = (id, updatedItem) => {
     item.condition = updatedItem.condition;
     item.price = updatedItem.price;
     item.details = updatedItem.details;
-    item.image = updatedItem.image;
+    if (updatedItem.image !== undefined) item.image = updatedItem.image;
     return true;
 }
 

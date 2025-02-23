@@ -19,7 +19,7 @@ router.get("/:id", controller.show);
 router.get("/:id/edit", controller.edit);
 
 // Update item by id
-router.put("/:id", controller.update);
+router.put("/:id", upload, controller.update);
 
 // Delete item by id
 router.delete("/:id", controller.delete);
