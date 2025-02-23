@@ -9,6 +9,9 @@ router.get("/", controller.index);
 // New item form
 router.get("/new", controller.new);
 
+// Search by keyword
+router.get("/search", controller.search);
+
 // Create new item
 router.post("/", upload, controller.create);
 

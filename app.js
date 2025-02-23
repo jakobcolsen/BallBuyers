@@ -21,6 +21,26 @@ app.get("/", (req, res) => {
 
 app.use("/items", itemRouter);
 
+app.use((req, res, next) => {
+  let err = new Error(`The requested URL ${req.url} could not be found.`);
+  err.status = 404;
+  next(err);
+});
+
+app.use((err, req, res, next) => {
+  if (err.status !== 404) { // 404 is usually a user error, will spam console in a production env
+    console.log(err.stack)
+  }; 
+
+  if (!err.status) {
+    err.status = 500;
+    err.message = "Internal Server Error";
+  }
+
+  res.status(err.status);
+  res.render("error", { error: err});
+});
+
 // Start server
 app.listen(port, hostname, () => {
   console.log(`Server is running on port ${port}`);

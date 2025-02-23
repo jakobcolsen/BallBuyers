@@ -20,39 +20,81 @@ exports.create = (req, res) => {
 }
 
 // Show item by id
-exports.show = (req, res) => {
+exports.show = (req, res, next) => {
     let item = model.findById(req.params.id);
+
     if (!item) {
-        res.send("404"); //TODO err
-        return;
+       let err = new Error(`The requested item with id of ${req.params.id} could not be found.`);
+       err.status = 404;
+       next(err);
+       return;
     }
+
     res.render("./items/item", { item });
 }
 
 // Edit item by id
-exports.edit = (req, res) => {
+exports.edit = (req, res, next) => {
     let item = model.findById(req.params.id);
+
     if (!item) {
-        res.send("404"); //TODO err
+        let err = new Error(`The requested item with id of ${req.params.id} could not be found.`);
+        err.status = 404;
+        next(err);
         return;
     }
+
     res.render("./items/edit", { item })
 }
 
 // Update item by id
 exports.update = (req, res) => {
     let item = req.body;
+
     if (req.file !== undefined) item.image = "/images/uploads/" + req.file.filename;
     if (!model.updateById(req.params.id, item)) {
-        res.send("404"); // TODO err
+        let err = new Error(`The requested item with id of ${req.params.id} could not be found.`);
+        err.status = 404;
+        next(err);
+        return;
     }
+
     res.redirect(`/items/${req.params.id}`);
 }
 
 // Delete item by id
 exports.delete = (req, res) => {
     if (!model.deleteById(req.params.id)) {
-        res.send("404"); // TODO err
+        let err = new Error(`The requested item with id of ${req.params.id} could not be found.`);
+        err.status = 404;
+        next(err);
+        return;
     }
+
     res.redirect("/items");
+}
+
+// Search by keyword (in any order)
+exports.search = (req, res) => {
+    if (!req.query || !req.query.keywords) {
+        res.redirect("/items");
+        return;
+    }
+
+    let keywords = new Set(req.query.keywords.toLowerCase().split(" ")); 
+    let keywordArray = Array.from(keywords); 
+    keywords = keywordArray.filter(keyword => keyword.length > 2);
+    let items = model.findAllActive();
+
+    items = items.filter(item => {
+        tempItem = { ...item }; // Clone item object to avoid modifying the original (learned that the hard way) 
+        delete tempItem["id"];
+        delete tempItem["offers"];
+        delete tempItem["active"];
+        delete tempItem["image"];
+
+        let itemString = Object.values(tempItem).join(" ").toLowerCase();
+        return keywords.every(keyword => itemString.includes(keyword));
+    });
+    res.render("./items/index", { items });
 }
