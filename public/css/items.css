@@ -38,6 +38,8 @@ a {
     grid-area: item;
     width: inherit;
     border-radius: 25px;
+    height: 400px;
+    object-fit: contain;
 }
 
 .card-title {

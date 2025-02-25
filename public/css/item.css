@@ -16,29 +16,37 @@ h2 {
     flex-wrap: wrap;
     justify-content: center;
     align-items: top;
-    gap: 2rem;
+    gap: 3rem;
     border-radius: 25px;
-    padding: 3rem 5rem;
+    padding: 3rem 3rem;
     background-color: white;
     width: fit-content;
     margin: 0 auto;
 }
 
 .item img {
-    height: 400px;
+    max-height: 500px;
+    max-width: 500px;
     border-radius: 25px;
+    object-fit: contain;
 }
 
 .item-information {
     display: grid;
     grid-template-areas: 
-            "title title title"
-            "seller condition offers"
-            "price price price"
-            "description description description"
-            "buttons buttons buttons";
-    grid-template-columns: min-content fit-content 1fr;
+            "title"
+            "irow"
+            "description"
+            "price"
+            "buttons";
+    grid-template-rows: 48px 48px 250px 84px 70px;
     max-width: 600px;
+}
+
+.item-information-row {
+    grid-area: irow;
+    display: flex;
+    gap: 1rem;
 }
 
 .item-title {
@@ -63,7 +71,7 @@ h2 {
 
 .item-price {
     grid-area: price;
-    font-size: 42px;
+    font-size: 60px;
     color: blue;
 }
 
@@ -79,40 +87,24 @@ h2 {
     font-size: 20px;
 }
 
-.buttons {
+.item-information form {
     grid-area: buttons;
+    display: flex;
+    gap: 1rem;
 }
 
-.edit {
+.item-information form button {
     padding: 1rem 2rem;
     border-radius: 25px;
     font-size: 20px;
     color: white;
     background-color: var(--primary-color);
     border: 3px solid var(--primary-color);
-    max-height: 4rem;
-    margin-right: 1rem;
 }
 
-.edit:hover {
+.item-information form button:hover {
     background-color: white;
     color: var(--primary-color);
-}
-
-.delete {
-    padding: 1rem 2rem;
-    border-radius: 25px;
-    font-size: 20px;
-    color: var(--primary-color);
-    background-color: white;
-    border: 3px solid var(--primary-color);
-    max-height: 4rem;
-    margin-left: 1rem;
-}
-
-.delete:hover {
-    background-color: var(--primary-color);
-    color: white;
 }
 
 .browse {
@@ -147,9 +139,7 @@ h2 {
     .item-information {
         grid-template-areas: 
             "title"
-            "seller"
-            "condition"
-            "offers"
+            "irow"
             "price"
             "description"
             "buttons";
@@ -162,6 +152,11 @@ h2 {
 
     .item-condition {
         padding-left: 0;
+    }
+
+    .item-information-row {
+        margin: 1rem 0;
+        flex-direction: column;
     }
 
     .buttons {

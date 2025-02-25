@@ -6,9 +6,11 @@
                 <img src="<%= item.image %>" alt="<%= item.title %>"">
                 <div class="item-information">
                     <p class="item-title"><%= item.title %></p>
-                    <p class="item-seller">Sold by: <%= item.seller %></p>
-                    <p class="item-condition"><%= item.condition %> Condition</p>
-                    <p class="item-offers"><%= item.offers %> offers</p>
+                    <div class="item-information-row">
+                        <p class="item-seller">Sold by: <%= item.seller %></p>
+                        <p class="item-condition"><%= item.condition %> Condition</p>
+                        <p class="item-offers"><%= item.offers %> offers</p>
+                    </div>
                     <p class="item-price">$<%= item.price %></p>
                     <p class="item-description"><%= item.details %></p>
                     <form>
