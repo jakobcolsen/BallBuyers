@@ -3,7 +3,8 @@ const model = require("../models/item");
 // Get all items
 exports.index = (req, res) => {
     let items = model.findAllActive();
-    res.render("./items/index", { items });
+    const title = "Catalog";
+    res.render("./items/index", { items, title });
 }
 
 // New item form
@@ -74,7 +75,7 @@ exports.delete = (req, res) => {
     res.redirect("/items");
 }
 
-// Search by keyword (in any order)
+// Search by keywords (in any order)
 exports.search = (req, res) => {
     if (!req.query || !req.query.keywords) {
         res.redirect("/items");
@@ -82,19 +83,28 @@ exports.search = (req, res) => {
     }
 
     let keywords = new Set(req.query.keywords.toLowerCase().split(" ")); 
-    let keywordArray = Array.from(keywords); 
-    keywords = keywordArray.filter(keyword => keyword.length > 2);
-    let items = model.findAllActive();
+    keywords = Array.from(keywords); 
+    keywords = keywords.filter(keyword => keyword.length > 2);
 
+    if (keywords.length === 0) {
+        res.redirect("/items");
+        return;
+    }
+
+    let items = model.findAllActive();
     items = items.filter(item => {
-        tempItem = { ...item }; // Clone item object to avoid modifying the original (learned that the hard way) 
+        let tempItem = { ...item }; // Clone item object to avoid modifying the original (learned that the hard way) 
         delete tempItem["id"];
         delete tempItem["offers"];
         delete tempItem["active"];
         delete tempItem["image"];
+        delete tempItem["seller"];
 
         let itemString = Object.values(tempItem).join(" ").toLowerCase();
         return keywords.every(keyword => itemString.includes(keyword));
     });
-    res.render("./items/index", { items });
+
+    let titleKeywords = (req.query.keywords.length > 20) ? req.query.keywords.substring(0, 20) + "..." : req.query.keywords;
+    const title = `Search results for "${titleKeywords}"`;
+    res.render("./items/index", { items, title });
 }
