@@ -164,7 +164,7 @@ h2 {
         margin-top: 1rem;
     }
 
-    .edit, .delete {
+    button {
         padding: 0.5rem 1rem;
     }
 }

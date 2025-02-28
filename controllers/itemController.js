@@ -13,8 +13,16 @@ exports.new = (req, res) => {
 }
 
 // Create new item
-exports.create = (req, res) => {
+exports.create = (req, res, next) => {
     let item = req.body;
+
+    if (req.file === undefined) {
+        let err = new Error("Form data not submitted correctly.");
+        err.status = 400;
+        next(err);
+        return
+    }
+    
     item.image = "/images/uploads/" + req.file.filename;
     item = model.create(item);
     res.redirect("/items");
