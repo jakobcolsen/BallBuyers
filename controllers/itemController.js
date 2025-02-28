@@ -49,7 +49,7 @@ exports.edit = (req, res, next) => {
 }
 
 // Update item by id
-exports.update = (req, res) => {
+exports.update = (req, res, next) => {
     let item = req.body;
 
     if (req.file !== undefined) item.image = "/images/uploads/" + req.file.filename;
@@ -64,7 +64,7 @@ exports.update = (req, res) => {
 }
 
 // Delete item by id
-exports.delete = (req, res) => {
+exports.delete = (req, res, next) => {
     if (!model.deleteById(req.params.id)) {
         let err = new Error(`The requested item with id of ${req.params.id} could not be found.`);
         err.status = 404;
