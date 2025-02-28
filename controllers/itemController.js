@@ -2,7 +2,7 @@ const model = require("../models/item");
 
 // Get all items
 exports.index = (req, res) => {
-    let items = model.findAllActive();
+    let items = model.sortByPriceAsc();
     const title = "Catalog";
     res.render("./items/index", { items, title });
 }
@@ -22,7 +22,7 @@ exports.create = (req, res, next) => {
         next(err);
         return
     }
-    
+
     item.image = "/images/uploads/" + req.file.filename;
     item = model.create(item);
     res.redirect("/items");

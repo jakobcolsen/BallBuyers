@@ -79,6 +79,11 @@ exports.findAllActive = () => {
     return this.findAll().filter(item => item.active);
 }
 
+// Get all active items sorted by price ascending (apparently this is how I was supposed to do this in the first place lol)
+exports.sortByPriceAsc = () => {
+    return this.findAllActive().sort((a, b) => a.price - b.price);
+}
+
 // Get item by id
 exports.findById = (id) => {
     return items.find(item => item.id === id);
