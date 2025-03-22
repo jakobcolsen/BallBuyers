@@ -1,28 +1,20 @@
-const { v4: uuidv4 } = require("uuid");
+const mongoose = require("mongoose");
+const Schema = mongoose.Schema;
+
+const itemSchema = new Schema({
+    title: {type: String, required: [true, "Title is required"]},
+    seller: {type: String, required: [true, "Seller is required"]},
+    condition: {type: String, required: [true, "Condition is required"]},
+    price: {type: Number, required: [true, "Price is required"]},
+    details: {type: String, required: [true, "Details are required"]},
+    image: {type: String, required: [true, "Image is required"]},
+    offers: {type: Number, default: 0},
+    active: {type: Boolean, default: true}
+}, {timestamps: true});
+
+module.exports = mongoose.model("Item", itemSchema);
 
 const items = [
-    {
-        id: "1",
-        title: "Willie Mays 1938 Signed Baseball",
-        seller: "Rick May",
-        condition: "Great",
-        price: 1200.00,
-        details: "Authenticated 1938 baseball signed by Willie Mays! Kept in great condition, no restoration work has been done to the ball.",
-        image: "/images/uploads/BB_WillieMays.jpeg",
-        offers: 0,
-        active: true
-    },
-    {
-        id: "2",
-        title: "1999 NYY Team Signed Baseball",
-        seller: "Cave Johnson",
-        condition: "Good",
-        price: 1535.00,
-        details: "1999 NYY Team Signed Baseball. Authenticated.",
-        image: "/images/uploads/bb-nyy-team-1999.jpg",
-        offers: 0,
-        active: true
-    },
     {
         id: "3",
         title: "Authentic! Daniel Norris Signed Baseball",
@@ -68,53 +60,3 @@ const items = [
         active: true
     }
 ];
-
-// Get all items
-exports.findAll = () => {
-    return items;
-}
-
-// Get all active items
-exports.findAllActive = () => {
-    return this.findAll().filter(item => item.active);
-}
-
-// Get all active items sorted by price ascending (apparently this is how I was supposed to do this in the first place lol)
-exports.sortByPriceAsc = () => {
-    return this.findAllActive().sort((a, b) => a.price - b.price);
-}
-
-// Get item by id
-exports.findById = (id) => {
-    return items.find(item => item.id === id);
-}
-
-// Create new item
-exports.create = (item) => {
-    item.id = uuidv4();
-    item.offers = 0;
-    item.active = true;
-    items.push(item);
-}
-
-// Update by id
-exports.updateById = (id, updatedItem) => {
-    const item = items.find(item => item.id === id);
-    if (!item) return false;
-
-    item.title = updatedItem.title;
-    item.condition = updatedItem.condition;
-    item.price = updatedItem.price;
-    item.details = updatedItem.details;
-    if (updatedItem.image !== undefined) item.image = updatedItem.image;
-    return true;
-}
-
-// Delete by id
-exports.deleteById = (id) => {
-    const index = items.findIndex(item => item.id === id);
-    if (index === -1) return false;
-
-    items.splice(index, 1);
-    return true;
-}

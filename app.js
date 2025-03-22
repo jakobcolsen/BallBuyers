@@ -1,12 +1,22 @@
 const express = require("express");
 const morgan = require("morgan");
 const methodOverride = require("method-override");
+const mongoose = require("mongoose");
+require("dotenv").config();
 const itemRouter = require("./routes/itemRoutes");
 
 const app = express();
 let port = 3000;
 let hostname = "localhost";
 app.set("view engine", "ejs");
+
+// MongoDB
+mongoose.connect(process.env.MONGO_URI)
+.then(() => {
+  app.listen(port, hostname, () => {
+    console.log(`Server is running on port ${port}`);
+  });
+}).catch(err => { console.log(err) });
 
 // Middleware
 app.use(express.static("public"));
@@ -39,9 +49,4 @@ app.use((err, req, res, next) => {
 
   res.status(err.status);
   res.render("error", { error: err});
-});
-
-// Start server
-app.listen(port, hostname, () => {
-  console.log(`Server is running on port ${port}`);
 });
