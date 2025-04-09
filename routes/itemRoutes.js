@@ -1,6 +1,7 @@
 const express = require("express");
 const controller = require("../controllers/itemController");
 const { upload, onError } = require("../middleware/fileUpload");
+const { validateId } = require("../middleware/validator");
 const router = express.Router();
 
 // Get all items
@@ -16,15 +17,15 @@ router.get("/search", controller.search);
 router.post("/", upload, onError, controller.create);
 
 // Show item by id
-router.get("/:id", controller.show);
+router.get("/:id", validateId, controller.show);
 
 // Edit item by id
-router.get("/:id/edit", controller.edit);
+router.get("/:id/edit", validateId, controller.edit);
 
 // Update item by id
-router.put("/:id", upload, controller.update);
+router.put("/:id", upload, validateId, controller.update);
 
 // Delete item by id
-router.delete("/:id", controller.delete);
+router.delete("/:id", validateId, controller.delete);
 
 module.exports = router;

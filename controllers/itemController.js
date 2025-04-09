@@ -21,14 +21,10 @@ exports.new = (req, res) => {
 exports.create = (req, res, next) => {
     let item = new model(req.body);
 
-    if (req.file === undefined) {
-        let err = new Error("Form data not submitted correctly.");
-        err.status = 400;
-        next(err);
-        return
+    if (req.file !== undefined) {
+        item.image = "/images/uploads/" + req.file.filename;
     }
-
-    item.image = "/images/uploads/" + req.file.filename;
+    
     item.save()
     .then(() => { res.redirect("/items") })
     .catch(err => { 
@@ -42,13 +38,6 @@ exports.create = (req, res, next) => {
 
 // Show item by id
 exports.show = (req, res, next) => {
-    if (!req.params.id.match(/^[0-9a-fA-F]{24}$/)) {
-        let err = new Error(`The requested item with id of ${req.params.id} could not be found.`);
-        err.status = 404;
-        next(err);
-        return;
-    }
-
     model.findById(req.params.id)
     .then(item => {
         if (!item) {
@@ -65,13 +54,6 @@ exports.show = (req, res, next) => {
 
 // Edit item by id
 exports.edit = (req, res, next) => {
-    if (!req.params.id.match(/^[0-9a-fA-F]{24}$/)) {
-        let err = new Error(`The requested item with id of ${req.params.id} could not be found.`);
-        err.status = 404;
-        next(err);
-        return;
-    }
-
     model.findById(req.params.id)
     .then(item => {
         if (!item) {
@@ -92,13 +74,6 @@ exports.update = (req, res, next) => {
 
     if (req.file !== undefined)  {
         item.image = "/images/uploads/" + req.file.filename;
-    }
-
-    if (!req.params.id.match(/^[0-9a-fA-F]{24}$/)) {
-        let err = new Error(`The requested item with id of ${req.params.id} could not be found.`);
-        err.status = 404;
-        next(err);
-        return;
     }
 
     model.findByIdAndUpdate(req.params.id, item, { useFindAndModify: false, runValidators: true })
@@ -129,13 +104,6 @@ exports.update = (req, res, next) => {
 
 // Delete item by id
 exports.delete = (req, res, next) => {
-    if (!req.params.id.match(/^[0-9a-fA-F]{24}$/)) {
-        let err = new Error(`The requested item with id of ${req.params.id} could not be found.`);
-        err.status = 404;
-        next(err);
-        return;
-    }
-
     model.findByIdAndDelete(req.params.id, { useFindAndModify: false })
     .then(item => {
         if (!item) {
