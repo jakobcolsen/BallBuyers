@@ -1,0 +1,9 @@
+<%- include("partials/header.ejs") %>
+    <link rel="stylesheet" href="/css/error.css">
+    <main>
+        <img src="/images/umpire-out.png" alt="Umpire calling out">
+        <h1><%= error.status %> - <%= error.message %></h1>
+        <p>Whoops! You&apos;re not meant to see this... either what you&apos;re looking for doesn&apos;t exist or something broke.</p>
+        <button class="catalog-button">Return to Catalog</button>
+    </main>
+<%- include("partials/footer.ejs") %>

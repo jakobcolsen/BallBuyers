@@ -1,0 +1,28 @@
+<%- include("../partials/header.ejs") %>
+        <link rel="stylesheet" href="/css/item.css">
+        <main>
+            <h2>View Item</h2>
+            <article class="item">
+                <img src="<%= item.image %>" alt="<%= item.title %>"">
+                <div class="item-information">
+                    <p class="item-title"><%= item.title %></p>
+                    <div class="item-information-row">
+                        <p class="item-seller">Sold by: <%= item.seller %></p>
+                        <p class="item-condition"><%= item.condition %> Condition</p>
+                        <p class="item-offers"><%= item.offers %> offers</p>
+                    </div>
+                    <p class="item-price">$<%= item.price %></p>
+                    <p class="item-description"><%= item.details %></p>
+                    <form>
+                        <button type="submit" class="edit" formmethod="GET" formaction="/items/<%= item.id %>/edit">Edit</button>
+                        <button type="submit" class="delete" formmethod="POST" formaction="/items/<%= item.id %>?_method=DELETE">Delete</button>
+                    </form>
+                    </div>
+                </div>
+            </article>
+            <div class="browse">
+                <h3>Not what you were looking for?</h3>
+                <button class="catalog-button">Browse the Catalog</button>
+            </div>
+        </main>
+<%- include("../partials/footer.ejs") %>

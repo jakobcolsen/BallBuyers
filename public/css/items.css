@@ -38,6 +38,8 @@ a {
     grid-area: item;
     width: inherit;
     border-radius: 25px;
+    height: 400px;
+    object-fit: contain;
 }
 
 .card-title {
@@ -58,7 +60,7 @@ a {
     grid-area: price;
     margin-top: 0.5rem;
     font-size: 30px;
-    color: blue;
+    color: navy;
     padding-right: 0.5rem;
 }
 
@@ -103,4 +105,8 @@ a {
 .catalog-end button:hover {
     background-color: white;
     color: var(--primary-color);
+}
+
+.center {
+    margin: 10rem auto;
 }
