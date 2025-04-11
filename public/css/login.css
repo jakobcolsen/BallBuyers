@@ -1,0 +1,88 @@
+body {
+    background-image: url("/images/bb-bg-new.jpg");
+}
+
+.login-container img {
+    width: 150px;
+    height: 150px;
+    margin: 0 auto;
+}
+
+h2 {
+    text-align: center;
+    font-size: 36px;
+    margin: 1rem 0;
+}
+
+.login-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 2rem;
+    border-radius: 25px;
+    gap: 1rem;
+    background-color: #FFFFFF;
+    width: 30%;
+    margin: 5rem auto;
+    min-width: 500px;
+}
+
+.login-container form {
+    display: grid;
+    grid-template-areas:
+        "email-label email"
+        "password-label password"
+        "submit submit";
+    gap: 2rem;
+}
+
+.login-container form label {
+    font-size: 20px;
+    align-self: center;
+}
+
+.login-container form input {
+    font-size: 20px;
+    padding: 0.5rem;
+    border-radius: 10px;
+    border: 2px solid var(--primary-color);
+}
+
+.login-container form label[for="email"] {
+    grid-area: email-label;
+}
+
+#email {
+    grid-area: email;
+}
+
+.login-container form label[for="password"] {
+    grid-area: password-label;
+}
+
+#password {
+    grid-area: password;
+}
+
+.login-container form button {
+    grid-area: submit;
+    border: 3px solid #FFFFFF;
+    background-color: var(--primary-color);
+    color: #FFFFFF;
+    border-radius: 25px;
+    padding: 1rem;
+    font-size: 20px;
+}
+
+.login-container form button:hover {
+    background-color: #FFFFFF;
+    color: var(--primary-color);
+    cursor: pointer;
+    border: 3px solid var(--primary-color);
+}
+
+.login-container p {
+    font-size: 20px;
+    text-align: center;
+}

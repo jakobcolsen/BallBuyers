@@ -4,6 +4,7 @@ const methodOverride = require("method-override");
 const mongoose = require("mongoose");
 require("dotenv").config();
 const itemRouter = require("./routes/itemRoutes");
+const userRouter = require("./routes/userRoutes");
 
 const app = express();
 let port = 3000;
@@ -30,6 +31,7 @@ app.get("/", (req, res) => {
 });
 
 app.use("/items", itemRouter);
+app.use("/user", userRouter);
 
 app.use((req, res, next) => {
   let err = new Error(`The requested URL ${req.url} could not be found.`);

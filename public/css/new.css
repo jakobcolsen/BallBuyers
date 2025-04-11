@@ -1,5 +1,5 @@
-main {
-    background-image: linear-gradient(rgba(255, 255, 255, 0.8), rgba(255, 255, 255, 0.8)), url("../images/bb-no-money.jpg");
+body {
+    background-image: url("../images/bb-no-money.jpg");
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
@@ -7,40 +7,32 @@ main {
 
 h2 {
     text-align: center;
-    padding: 1rem;
-    font-size: 40px;
+    font-size: 36px;
+    margin: 1rem 0 0.5rem 0;
 }
 
 .new {
     display: flex;
-    flex-wrap: wrap;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
-    gap: 5rem;
+    gap: 1rem;
     border-radius: 25px;
     padding: 3rem 5rem;
     background-color: white;
     width: fit-content;
-    margin: 0 auto;
+    margin: 5rem auto;
 }
 
-.new-text {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    gap: 2rem;
-    width: min-content;
+.new img {
+    width: 150px;
 }
 
-.new-text img {
-    width: 300px;
-}
-
-.new-text p {
+.new p {
     font-size: 24px;
     text-align: center;
     width: 500px;
+    margin: 0 0 1rem 0;
 }
 
 .new form {
@@ -50,7 +42,6 @@ h2 {
             "conditionlabel condition"
             "pricelabel price"
             "descriptionlabel description"
-            "sellerlabel seller"
             "imagelabel image"
             ". button";
     grid-template-columns: fit-content 1fr;
@@ -74,10 +65,6 @@ label[for="description"] {
     grid-area: descriptionlabel;
 }
 
-label[for="seller"] {
-    grid-area: sellerlabel;
-}
-
 label[for="image"] {
     grid-area: imagelabel;
 }
@@ -97,10 +84,7 @@ label[for="image"] {
 
 #description {
     grid-area: description;
-}
-
-#seller {
-    grid-area: seller;
+    max-width: 500px;
 }
 
 #image {
@@ -123,7 +107,7 @@ label {
 .new form button {
     grid-area: button;
     padding: 1rem 3rem;
-    border-radius: 100px;
+    border-radius: 25px;
     font-size: 24px;
     color: white;
     background-color: var(--primary-color);
@@ -138,14 +122,9 @@ label {
 @media screen and (max-width: 800px) {
     .new {
         padding: 3rem 1rem;
-        gap: 3rem;
     }
 
-    .new-text img {
-        width: 200px;
-    }
-
-    .new-text p {
+    .new p {
         width: 300px;
     }
 

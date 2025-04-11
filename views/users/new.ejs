@@ -1,0 +1,23 @@
+<%- include("../partials/header.ejs") %>
+<link rel="stylesheet" href="/css/signup.css">
+    <div class="signup-container">
+        <img src="/images/bb-logo.png" alt="BallBuyers logo">
+        <h2>Create an Account</h2>
+        <form method="POST" action="/user/signup">
+            <label for="firstName">First Name</label>
+            <input type="text" id="firstName" name="firstName" required>
+            <label for="lastName">Last Name</label>
+            <input type="text" id="lastName" name="lastName" required>
+            <label for="username">Username</label>
+            <input type="text" id="username" name="username" required>
+            <label for="email">Email</label>
+            <input type="email" id="email" name="email" required>
+            <label for="password">Password</label>
+            <input type="password" id="password" name="password" required>
+            <label for="confirmPassword">Confirm Password</label>
+            <input type="password" id="confirmPassword" name="confirmPassword" required>
+            <button type="submit">Sign Up</button>
+        </form>
+        <p>Already have an account? <a href="/user/login">Login</a></p>
+    </div>
+<%- include("../partials/footer.ejs") %>

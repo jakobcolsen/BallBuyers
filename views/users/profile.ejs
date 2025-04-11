@@ -1,0 +1,42 @@
+<%- include("../partials/header.ejs") %>
+    <link rel="stylesheet" href="/css/profile.css">
+    <h2>Username</h2>
+    <h3>Your Items</h3>
+    <div class="yi-container">
+        <div class="yi-titlebar">
+            <h4 class="titlebar-item">Item</h4>
+            <h4 class="titlebar-offers">Offers</h4>
+            <h4 class="titlebar-status">Status</h4>
+            <h4 class="titlebar-actions">Actions</h4>
+        </div>
+        <div class="yi-items">
+            <p class="item-name"><a href="/">Willie Mays 1938 Signed Baseball</a></p>
+            <p class="item-offers"><a href="/">3</a></p>
+            <p class="item-status">Active</p>
+            <div class="yi-actions">
+                <a href="/"><button class="yi-action">Edit</button></a>
+                <a href="/"><button class="yi-action">Delete</button></a>
+            </div>
+        </div>
+        <div class="yi-items">
+            <p class="item-name"><a href="/">Willie Mays 1938 Signed Baseball</a></p>
+            <p class="item-offers"><a href="/">3</a></p>
+            <p class="item-status">Active</p>
+            <div class="yi-actions">
+                <a href="/"><button class="yi-action">Edit</button></a>
+                <a href="/"><button class="yi-action">Delete</button></a>
+            </div>
+        </div>
+    </div>
+    <h3>Your Offers</h3>
+    <div class="item-card-container">
+        <a href="/"><div class="card">
+            <img src="/images/uploads/1742607517620-256616569.80209747.jpeg" class="card-image" alt=title">
+            <p class="card-title">Willie Mays Signed 1938 Baseball</p>
+            <p class="card-condition">Perfect</p>
+            <p class="card-price">$1800.00</p>
+            <p class="card-offers">2 other offers</p>
+        </div></a>
+    </div>
+
+<%- include("../partials/footer.ejs") %>

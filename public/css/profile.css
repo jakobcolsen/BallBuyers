@@ -1,0 +1,179 @@
+h2 {
+    text-align: center;
+    padding: 1rem 1rem 0 1rem;
+    font-size: 40px;
+}
+
+.item-card-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-bottom: 1rem;
+}
+
+.card {
+    display: grid;
+    grid-template-areas: 
+            "item item"
+            "title title"
+            "condition condition"
+            "offers price";
+    grid-template-columns: 1fr min-content;
+    width: 400px;
+    margin: 1rem;
+    padding-bottom: 0.1rem;
+    border-bottom: 3px solid transparent;
+}
+
+a {
+    color: black;
+    text-decoration: none;
+}
+
+.card:hover {
+    border-bottom: 3px solid var(--primary-color);
+}
+
+.card-image {
+    grid-area: item;
+    width: inherit;
+    border-radius: 25px;
+    height: 400px;
+    object-fit: contain;
+}
+
+.card-title {
+    grid-area: title;
+    margin-top: 0.25rem;
+    font-size: 28px;
+    padding-left: 0.5rem;
+}
+
+.card-condition {
+    grid-area: condition;
+    color: rgba(0, 0, 0, 0.7);
+    font-size: 20px;
+    padding-left: 0.5rem;
+}
+
+.card-price {
+    grid-area: price;
+    margin-top: 0.5rem;
+    font-size: 30px;
+    color: navy;
+    padding-right: 0.5rem;
+}
+
+.card-offers {
+    grid-area: offers;
+    align-self: end;
+    text-align: right;
+    margin-top: 0.5rem;
+    margin-bottom: 0.35rem;
+    margin-right: 0.5rem;
+    font-size: 15px;
+    font-weight: bold;
+    padding-right: 0.5rem;
+}
+
+h2 {
+    text-align: center;
+    font-size: 48px;
+    margin: 1rem 0;
+}
+
+h3 {
+    text-align: center;
+    font-size: 36px;
+    margin: 1rem 0;
+}
+
+h4 {
+    font-size: 30px;
+    margin: 1rem 0;
+}
+
+.yi-container {
+    width: 90%;
+    margin: 1rem auto;
+}
+
+.yi-titlebar {
+    display: grid;
+    grid-template-columns: minmax(200px, 800px) repeat(3, 200px);
+    grid-template-areas: 
+        "item offers status actions";
+    gap: 1rem;
+    justify-content: center;
+}
+
+.titlebar-item {
+    grid-area: item;
+}
+
+.titlebar-offers {
+    grid-area: offers;
+    text-align: center;
+}
+
+.titlebar-status {
+    grid-area: status;
+    text-align: center;
+}
+
+.titlebar-actions {
+    grid-area: actions;
+    text-align: center;
+}
+
+.yi-items {
+    font-size: 20px;
+    justify-content: center;
+    display: grid;
+    grid-template-columns: minmax(200px, 800px) repeat(3, 200px);
+    grid-template-areas: 
+        "item-name item-offers item-status item-actions";
+    grid-template-rows: auto;
+    gap: 1rem;
+    padding: 1rem 0;
+    border-radius: 15px;
+}
+
+.yi-items:hover {
+    background-color: rgba(0, 0, 0, 0.05);
+}
+
+.item-name {
+    grid-area: item-name;
+    border-bottom: 3px solid transparent;
+    width: fit-content;
+}
+
+.item-name:hover {
+    border-bottom: 3px solid var(--primary-color);
+}
+
+.item-offers {
+    grid-area: item-offers;
+    width: fit-content;
+    text-align: center;
+    border-bottom: 3px solid transparent;
+    margin: 0 auto;
+}
+
+.item-offers:hover {
+    border-bottom: 3px solid var(--primary-color);
+}
+
+.item-status {
+    grid-area: item-status;
+    text-align: center;
+}
+
+.yi-actions {
+    grid-area: item-actions;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+}
