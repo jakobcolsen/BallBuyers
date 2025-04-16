@@ -7,16 +7,12 @@
                 <div class="item-information">
                     <p class="item-title"><%= item.title %></p>
                     <div class="item-information-row">
-                        <p class="item-seller">Sold by: <%= item.seller %></p>
+                        <p class="item-seller">Sold by: <%= item.seller.firstName %> <%= item.seller.lastName %></p>
                         <p class="item-condition"><%= item.condition %> Condition</p>
-                        <p class="item-offers"><%= item.offers %> offers</p>
+                        <p class="item-offers"><%= item.offers.length %> offers</p>
                     </div>
                     <p class="item-price">$<%= item.price %></p>
                     <p class="item-description"><%= item.details %></p>
-                    <form>
-                        <button type="submit" class="edit" formmethod="GET" formaction="/items/<%= item.id %>/edit">Edit</button>
-                        <button type="submit" class="delete" formmethod="POST" formaction="/items/<%= item.id %>?_method=DELETE">Delete</button>
-                    </form>
                     </div>
                 </div>
             </article>

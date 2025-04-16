@@ -12,7 +12,8 @@
             </div>
         <% items.forEach(item => { %>
             <div class="yi-items">
-                <p class="item-name"><a href="/items/<%= item._id %>"><%= item.title %></a></p>
+                <% let displayTitle = item.title.length > 20 ? item.title.substring(0, 23) + "..." : item.title; %>
+                <p class="item-name"><a href="/items/<%= item._id %>"><%= displayTitle %></a></p>
                 <p class="item-offers"><a href="/items/<%= item._id %>"><%= item.offers.length %></a></p>
                 <% if (item.active) { %>
                     <p class="item-status">Active</p>

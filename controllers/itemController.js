@@ -48,7 +48,9 @@ exports.show = (req, res, next) => {
             return;
         }
 
-        res.render("./items/item", { item });
+        item = item.populate("seller", "firstName lastName")
+        .then(item => { res.render("./items/item", { item }) })
+        .catch(err => { next(err) });
     })
     .catch(err => { next(err) });
 }

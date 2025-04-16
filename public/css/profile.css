@@ -100,7 +100,7 @@ h4 {
 
 .yi-titlebar {
     display: grid;
-    grid-template-columns: minmax(200px, 800px) repeat(3, 200px);
+    grid-template-columns: minmax(150px, 800px) repeat(3, 150px);
     grid-template-areas: 
         "item offers status actions";
     gap: 1rem;
@@ -130,13 +130,14 @@ h4 {
     font-size: 20px;
     justify-content: center;
     display: grid;
-    grid-template-columns: minmax(200px, 800px) repeat(3, 200px);
+    grid-template-columns: minmax(150px, 800px) repeat(3, 150px);
     grid-template-areas: 
         "item-name item-offers item-status item-actions";
     grid-template-rows: auto;
     gap: 1rem;
     padding: 1rem 0;
     border-radius: 15px;
+    align-items: center;
 }
 
 .yi-items:hover {
@@ -175,5 +176,47 @@ h4 {
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 1rem;
+    gap: 0.5rem;
+}
+
+.yi-actions button {
+    padding: 1rem;
+    border-radius: 25px;
+    font-size: 16px;
+    color: white;
+    background-color: var(--primary-color);
+    border: 3px solid var(--primary-color);
+    height: fit-content;
+}
+
+@media screen and (max-width: 800px) {
+    .item-card-container {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .card {
+        width: 90%;
+        margin: 1rem auto;
+    }
+
+    .yi-container {
+        width: 100%;
+    }
+
+    .yi-titlebar {
+        grid-template-columns: repeat(4, 1fr);
+    }
+
+    .yi-items {
+        grid-template-columns: repeat(4, 1fr);
+    }
+
+    h4 {
+        font-size: 24px;
+    }
+
+    p {
+        font-size: 16px;
+    }
 }
