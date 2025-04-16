@@ -153,7 +153,6 @@ exports.search = (req, res, next) => {
             delete tempItem["__v"];
             delete tempItem["createdAt"];
             delete tempItem["updatedAt"];
-            console.log(tempItem);
     
             let itemString = Object.values(tempItem).join(" ").toLowerCase();
             return keywords.every(keyword => itemString.includes(keyword));

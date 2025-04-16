@@ -31,7 +31,7 @@ exports.authenticate = (req, res, next) => {
 }
 
 exports.signup = (req, res) => {
-    res.render("users/new");
+    res.render("/users/new");
 }
 
 exports.register = (req, res) => {
