@@ -1,6 +1,9 @@
 const express = require("express");
 const morgan = require("morgan");
 const methodOverride = require("method-override");
+const session = require("express-session");
+const flash = require("connect-flash");
+const MongoStore= require("connect-mongo");
 const mongoose = require("mongoose");
 require("dotenv").config();
 const itemRouter = require("./routes/itemRoutes");
@@ -24,6 +27,22 @@ app.use(express.static("public"));
 app.use(express.urlencoded({ extended: true }));
 app.use(morgan("tiny"));
 app.use(methodOverride("_method"));
+app.use(session({
+  secret: process.env.SESSION_SECRET,
+  resave: false,
+  saveUninitialized: false,
+  cookie: { maxAge: 1000 * 3600 * 24}, // 1 day
+  store: new MongoStore({mongoUrl: process.env.MONGO_URI})
+}));
+app.use(flash());
+
+app.use((req, res, next) => {
+  res.locals.success = req.flash("success");
+  res.locals.error = req.flash("error");
+  res.locals.user = req.session.user;
+  next();
+});
+
 
 // Routing
 app.get("/", (req, res) => {
@@ -50,5 +69,5 @@ app.use((err, req, res, next) => {
   }
 
   res.status(err.status);
-  res.render("error", { error: err});
+  res.render("error", { error: err });
 });

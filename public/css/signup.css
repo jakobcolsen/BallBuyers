@@ -34,7 +34,6 @@ h2 {
     grid-template-areas: 
         "firstName-label firstName"
         "lastName-label lastName"
-        "username-label username"
         "email-label email"
         "password-label password"
         "confirmPassword-label confirmPassword"
@@ -68,14 +67,6 @@ h2 {
 
 #lastName {
     grid-area: lastName;
-}
-
-.signup-container form label[for="username"] {
-    grid-area: username-label;
-}
-
-#username {
-    grid-area: username;
 }
 
 .signup-container form label[for="email"] {

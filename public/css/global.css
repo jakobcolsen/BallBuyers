@@ -69,6 +69,30 @@ nav a:hover {
     border-radius: 15px;
 }
 
+.jumping-jack-flash {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+}
+
+.error, .success {
+    margin: 2rem 0;
+    font-size: 30px;
+    border-radius: 10px;
+    text-align: center;
+    padding: 0.5rem 1rem;
+}
+
+.error {
+    background-color: #FF5555;
+}
+
+.success {
+    background-color: #26A000;
+
+}
+
 main {
     min-height: 100vh;
 }

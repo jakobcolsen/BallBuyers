@@ -9,10 +9,10 @@ const storage = multer.diskStorage({
         const suffix = Date.now() + "-" + (Math.random() * 1E9);
         cb(null, suffix + path.extname(file.originalname));
     },
-    onError: (err, next) => {
+    onError: (err, req, res, next) => {
         if (err.message === "File too large") {
-            err.message = "File too large: max size is 4MB";
-            err.status = 400;
+            req.flash("error", "File too large: max size is 2MB");
+            return res.redirect("back");
         }
 
         next(err);
@@ -22,13 +22,13 @@ const storage = multer.diskStorage({
 const fileFilter = (req, file, cb) => {
     const mimeTypes = ["image/jpeg", "image/png"];
     if (mimeTypes.includes(file.mimetype)) return cb(null, true);
-    cb(new Error("Invalid file type: only .jpg, .png are allowed"));
+    cb([req.flash("error", "Only .jpg and .png files allowed"), res.redirect("back")], false); // I have no idea if this works
 };
 
 exports.onError = (err, req, res, next) => {
     if (err.message === "File too large") {
-        err.message = "File too large: max size is 2MB";
-        err.status = 413;
+        req.flash("error", "File too large: max size is 2MB");
+        return res.redirect("back");
     }
 
     next(err);
