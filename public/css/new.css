@@ -1,8 +1,9 @@
 body {
-    background-image: url("../images/bb-no-money.jpg");
+    background-image: url("/images/bb-no-money.jpg");
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
+    object-fit: cover;
 }
 
 h2 {
@@ -90,6 +91,7 @@ label[for="image"] {
 #image {
     grid-area: image;
     background-color: white;
+    max-width: 500px;
 }
 
 label {

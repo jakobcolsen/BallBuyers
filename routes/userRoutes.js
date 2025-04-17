@@ -5,10 +5,10 @@ const { isGuest, isLoggedIn } = require("../middleware/auth");
 const router = express.Router();
 
 router.get("/login", isGuest, controller.login);
-router.post("/login", isGuest, validateEmail, controller.authenticate);
+router.post("/login", isGuest, controller.authenticate);
 
-router.get("/signup", isGuest, controller.signup);
-router.post("/signup", isGuest, validateEmail, controller.register);
+router.get("/new", isGuest, controller.signup);
+router.post("/", isGuest, controller.register);
 
 router.get("/profile", isLoggedIn, controller.profile);
 

@@ -27,7 +27,10 @@ exports.create = (req, res, next) => {
     }
     
     item.save()
-    .then(() => { res.redirect("/items") })
+    .then(() => {
+        req.flash("success", "Item added successfully.");
+        res.redirect("/items") 
+    })
     .catch(err => { 
         if (err.name === "ValidationError") {
             err.status = 400;
@@ -94,6 +97,7 @@ exports.update = (req, res, next) => {
             return;
         }
 
+        req.flash("success", "Item updated successfully.");
         res.redirect(`/items/${req.params.id}`);
     })
     .catch(err => {
@@ -120,6 +124,7 @@ exports.delete = (req, res, next) => {
         let imagePath = path.join(__dirname, "..", "public", item.image);
         fs.unlink(imagePath, err => { if (err) { console.log(err) } });
 
+        req.flash("success", "Item deleted successfully.");
         res.redirect("/items");
     })
     .catch(err => { next(err) });

@@ -10,25 +10,25 @@
                 <h4 class="titlebar-status">Status</h4>
                 <h4 class="titlebar-actions">Actions</h4>
             </div>
-        <% items.forEach(item => { %>
-            <div class="yi-items">
-                <% let displayTitle = item.title.length > 20 ? item.title.substring(0, 23) + "..." : item.title; %>
-                <p class="item-name"><a href="/items/<%= item._id %>"><%= displayTitle %></a></p>
-                <p class="item-offers"><a href="/items/<%= item._id %>"><%= item.offers.length %></a></p>
-                <% if (item.active) { %>
-                    <p class="item-status">Active</p>
-                <% } else { %>
-                    <p class="item-status">Inactive</p>
-                <% } %>
-                <form class="yi-actions">
-                    <button class="yi-action" type="submit" formmethod="GET" formaction="/items/<%= item._id %>/edit">Edit</button>
-                    <button class="yi-action" type="submit" formmethod="POST" formaction="/items/<%= item._id %>?_method=DELETE">Delete</button>
-                </form>
-            </div>
+            <% items.forEach(item => { %>
+                <div class="yi-items">
+                    <% let displayTitle = item.title.length > 20 ? item.title.substring(0, 23) + "..." : item.title; %>
+                    <p class="item-name"><a href="/items/<%= item._id %>"><%= displayTitle %></a></p>
+                    <p class="item-offers"><a href="/items/<%= item._id %>"><%= item.offers.length %></a></p>
+                    <% if (item.active) { %>
+                        <p class="item-status">Active</p>
+                    <% } else { %>
+                        <p class="item-status">Inactive</p>
+                    <% } %>
+                    <form class="yi-actions">
+                        <button class="yi-action" type="submit" formmethod="GET" formaction="/items/<%= item._id %>/edit">Edit</button>
+                        <button class="yi-action" type="submit" formmethod="POST" formaction="/items/<%= item._id %>?_method=DELETE">Delete</button>
+                    </form>
+                </div>
+            <% }); %>
         </div>
-        <% }); %>
     <% } else { %>
-        <p>You have no items listed for sale.</p>
+        <p class="no-items">You have no items listed for sale.</p>
     <% } %>
     
     <h3>Your Offers</h3>

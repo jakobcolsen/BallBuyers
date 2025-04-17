@@ -7,7 +7,7 @@
                     <% items.forEach(item => { %>
                         <a href="/items/<%= item.id %>"><div class="card">
                             <img src="<%= item.image %>" class="card-image" alt="<%= item.title %>">
-                            <% let displayTitle = item.title.length > 20 ? item.title.substring(0, 23) + "..." : item.title; %>
+                            <% let displayTitle = item.title.length > 20 ? item.title.substring(0, 20) + "..." : item.title; %>
                             <p class="card-title"><%= displayTitle %></p>
                             <p class="card-condition"><%= item.condition %></p>
                             <p class="card-price">$<%= item.price %></p>

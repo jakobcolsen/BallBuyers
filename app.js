@@ -50,7 +50,7 @@ app.get("/", (req, res) => {
 });
 
 app.use("/items", itemRouter);
-app.use("/user", userRouter);
+app.use("/users", userRouter);
 
 app.use((req, res, next) => {
   let err = new Error(`The requested URL ${req.url} could not be found.`);

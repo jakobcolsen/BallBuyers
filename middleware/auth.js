@@ -5,7 +5,7 @@ exports.isGuest = (req, res, next) => {
         return next();
     }
     req.flash("error", "You are already logged in");
-    res.redirect("/user/profile");
+    res.redirect("/users/profile");
 }
 
 exports.isLoggedIn = (req, res, next) => {
@@ -13,7 +13,7 @@ exports.isLoggedIn = (req, res, next) => {
         return next();
     }
     req.flash("error", "You must be logged in to access this page");
-    res.redirect("/user/login");
+    res.redirect("/users/login");
 }
 
 exports.isSeller = (req, res, next) => {
@@ -23,8 +23,10 @@ exports.isSeller = (req, res, next) => {
             if (item.seller == req.session.user) {
                 return next();
             } else {
-                req.flash("error", "You are not authorized to access this page");
-                res.redirect("back");
+                let err = new Error("You are not authorized to access this page.");
+                err.status = 401;
+                next(err);
+                return;
             }
         } else {
             let err = new Error(`The requested item with id of ${req.params.id} could not be found.`);

@@ -3,7 +3,7 @@
     <div class="signup-container">
         <img src="/images/bb-logo.png" alt="BallBuyers logo">
         <h2>Create an Account</h2>
-        <form method="POST" action="/user/signup">
+        <form method="POST" action="/users/">
             <label for="firstName">First Name</label>
             <input type="text" id="firstName" name="firstName" required>
             <label for="lastName">Last Name</label>
@@ -16,6 +16,6 @@
             <input type="password" id="confirmPassword" name="confirmPassword" required>
             <button type="submit">Sign Up</button>
         </form>
-        <p>Already have an account? <a href="/user/login">Login</a></p>
+        <p>Already have an account? <a href="/users/login">Login</a></p>
     </div>
 <%- include("../partials/footer.ejs") %>

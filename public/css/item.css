@@ -1,14 +1,33 @@
-main {
-    background-image: linear-gradient(rgba(255, 255, 255, 0.8), rgba(255, 255, 255, 0.8)), url("../images/bb-bg-new.jpg");
+body {
+    background-image: url("../images/bb-bg-new.jpg");
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
+}
+
+.item-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 2rem 0;
+    gap: 1rem;
+    border-radius: 25px;
+    padding: 2rem;
+    background-color: white;
+    width: fit-content;
+    margin: 5rem auto;
 }
 
 h2 {
     text-align: center;
     padding: 1rem;
     font-size: 40px;
+    overflow-wrap: break-word;
+    word-break: break-word;
+    white-space: normal;
+    max-height: 4rem;
+    max-width: 1000px;
 }
 
 .item {
@@ -17,11 +36,6 @@ h2 {
     justify-content: center;
     align-items: top;
     gap: 3rem;
-    border-radius: 25px;
-    padding: 3rem 3rem;
-    background-color: white;
-    width: fit-content;
-    margin: 0 auto;
 }
 
 .item img {
@@ -34,11 +48,10 @@ h2 {
 .item-information {
     display: grid;
     grid-template-areas: 
-            "title"
             "irow"
             "description"
             "price";
-    grid-template-rows: min-content min-content 1fr min-content min-content;
+    grid-template-rows: min-content 1fr min-content;
     max-width: 600px;
     gap: 0.5rem;
 }
@@ -48,17 +61,6 @@ h2 {
     display: flex;
     flex-wrap: wrap;
     gap: 1rem;
-}
-
-.item-title {
-    grid-area: title;
-    font-size: 30px;
-    overflow-y: scroll;
-    font-weight: bold;
-    overflow-wrap: break-word;
-    word-break: break-word;
-    white-space: normal;
-    max-height: 3rem;
 }
 
 .item-condition {
@@ -150,7 +152,6 @@ h2 {
 @media screen and (max-width: 800px) {
     .item-information {
         grid-template-areas: 
-            "title"
             "irow"
             "price"
             "description"
