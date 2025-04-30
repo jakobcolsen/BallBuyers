@@ -1,0 +1,40 @@
+<%- include ("../../partials/header") %>
+<link rel="stylesheet" href="/css/offer_index.css">
+<% let displayTitle = item.title.length > 20 ? item.title.substring(0, 23) + "..." : item.title; %>
+<h2>Offers for <%= displayTitle %></h2>
+<% if (offers.length > 0) { %>
+    <div class="offer-container">
+        <div class="offer-titlebar">
+            <h4 class="offer-titlebar-buyer">Buyer</h2>
+            <h4 class="offer-titlebar-price">Price</h2>
+            <h4 class="offer-titlebar-status">Status</h2>
+            <% if (item.active) { %>
+                <h4 class="offer-titlebar-actions">Actions</h2>
+            <% } %>
+        </div>
+        <% offers.forEach(offer => { %>
+            <div class="offer-card">
+                <p class="offer-buyer"><%= offer.buyer.firstName + " " + offer.buyer.lastName %></p>
+                <p class="offer-price">$<%= offer.amount %></p>
+                <p class="offer-status"><%= offer.status %></p>
+                <% if (item.active) { %>
+                    <% if (offer.status === "Rejected") { %>
+                        <form class="offer-actions">
+                            <button class="offer-action inactive" type="submit" formmethod="POST" formaction="/items/<%= item._id %>/offers/<%= offer._id %>/accept">Accept</button>
+                            <button class="offer-action inactive" type="submit" formmethod="POST" formaction="/items/<%= item._id %>/offers/<%= offer._id %>/reject">Reject</button>
+                        </form>
+                    <% } else { %>
+                        <form class="offer-actions">
+                            <button class="offer-action" type="submit" formmethod="POST" formaction="/items/<%= item._id %>/offers/<%= offer._id %>/accept">Accept</button>
+                            <button class="offer-action" type="submit" formmethod="POST" formaction="/items/<%= item._id %>/offers/<%= offer._id %>/reject">Reject</button>
+                        </form>
+                    <% } %>
+                <% } %>
+            </div>
+        <% }); %>
+<% } else { %>
+    <p class="no-offers">No offers on this item yet.</p>
+<% } %>
+</div>
+
+<%- include ("../../partials/footer") %>

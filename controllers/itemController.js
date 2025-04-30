@@ -1,6 +1,8 @@
 const model = require("../models/item");
 const fs = require("fs");
 const path = require("path");
+const { isSeller } = require("../middleware/auth");
+const Offer = require("../models/offer");
 
 // Get all items
 exports.index = (req, res, next) => {
@@ -41,9 +43,9 @@ exports.create = (req, res, next) => {
 }
 
 // Show item by id
-exports.show = (req, res, next) => {
+exports.show = async (req, res, next) => {
     model.findById(req.params.id)
-    .then(item => {
+    .then(async item => {
         if (!item) {
             let err = new Error(`The requested item with id of ${req.params.id} could not be found.`);
             err.status = 404;
@@ -51,8 +53,21 @@ exports.show = (req, res, next) => {
             return;
         }
 
-        item = item.populate("seller", "firstName lastName")
-        .then(item => { res.render("./items/item", { item }) })
+        let offer = null;
+        if (req.session.user && item.offers.length > 0) {
+            await item.populate("offers", "buyer _id")
+            .then(item => {
+                item.offers.forEach(itemOffer => {
+                    if (itemOffer.buyer == req.session.user) {
+                        offer = itemOffer._id;
+                    }
+                });
+            })
+            .catch(err => { next(err) });
+        }
+    
+        await item.populate("seller", "firstName lastName _id")
+        .then(item => { res.render("./items/item", { item, offer }) })
         .catch(err => { next(err) });
     })
     .catch(err => { next(err) });
@@ -119,6 +134,11 @@ exports.delete = (req, res, next) => {
             next(err);
             return;
         }
+
+        // Delete all offers associated with the item
+        Offer.deleteMany({ item: req.params.id })
+        .then(() => { return; })
+        .catch(err => { next(err) });
 
         // Delete image from uploads folder
         let imagePath = path.join(__dirname, "..", "public", item.image);

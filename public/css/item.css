@@ -28,6 +28,7 @@ h2 {
     white-space: normal;
     max-height: 4rem;
     max-width: 1000px;
+    margin-bottom: 3rem;
 }
 
 .item {
@@ -50,8 +51,9 @@ h2 {
     grid-template-areas: 
             "irow"
             "description"
-            "price";
-    grid-template-rows: min-content 1fr min-content;
+            "price"
+            "offer-form";
+    grid-template-rows: min-content 1fr min-content, min-content;
     max-width: 600px;
     gap: 0.5rem;
 }
@@ -64,7 +66,6 @@ h2 {
 }
 
 .item-condition {
-    grid-area: condition;
     color: rgba(0, 0, 0, 0.7);
     font-size: 20px;
     padding-left: 1rem;
@@ -72,7 +73,6 @@ h2 {
 }
 
 .item-offers {
-    grid-area: offers;
     color: rgba(0, 0, 0, 0.7);
     font-size: 20px;
 }
@@ -84,7 +84,6 @@ h2 {
 }
 
 .item-seller {
-    grid-area: seller;
     font-size: 20px;
     min-width: 200px;
 }
@@ -98,27 +97,6 @@ h2 {
     overflow-wrap: break-word;
     word-break: break-word;
     white-space: normal;
-}
-
-.item-information form {
-    grid-area: buttons;
-    display: flex;
-    gap: 1rem;
-}
-
-.item-information form button {
-    padding: 1rem 2rem;
-    border-radius: 25px;
-    font-size: 20px;
-    color: white;
-    background-color: var(--primary-color);
-    border: 3px solid var(--primary-color);
-    height: fit-content;
-}
-
-.item-information form button:hover {
-    background-color: white;
-    color: var(--primary-color);
 }
 
 .browse {
@@ -149,13 +127,69 @@ h2 {
     color: var(--primary-color);
 }
 
+.offer-form {
+    grid-area: offer-form;
+    display: grid;
+    grid-template-areas: 
+        "label input"
+        "button button";
+    row-gap: 1rem;
+    grid-template-rows: 50px 60px;
+    grid-template-columns: 150px 300px;
+}
+
+label[for="offer-amount"] {
+    grid-area: label;
+    align-self: center;
+}
+
+#offer-amount {
+    grid-area: input;
+    padding: 0.5rem;
+    border-radius: 15px;
+    border: 3px solid var(--primary-color);
+    font-size: 24px;
+}
+
+.offer-button {
+    grid-area: button;
+    padding: 0.5rem 3rem;
+    border-radius: 15px;
+    font-size: 24px;
+    color: white;
+    background-color: var(--primary-color);
+    border: 3px solid var(--primary-color);
+}
+
+.offer-button:hover {
+    background-color: white;
+    color: var(--primary-color);
+}
+
+.delete-offer-button {
+    grid-area: dbutton;
+    padding: 0.5rem 3rem;
+    border-radius: 15px;
+    font-size: 24px;
+    color: white;
+    background-color: #C00000;
+    border: 3px solid #C00000;
+    width: 450px;
+}
+
+.delete-offer-button:hover {
+    background-color: white;
+    color: #C00000;
+}
+
+
 @media screen and (max-width: 800px) {
     .item-information {
         grid-template-areas: 
             "irow"
             "price"
             "description"
-            "buttons";
+            "offer-form";
         grid-template-columns: 1fr;
     }
 

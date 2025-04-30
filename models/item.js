@@ -9,6 +9,7 @@ const itemSchema = new Schema({
     details: {type: String, required: [true, "Details are required"]},
     image: {type: String, required: [true, "Image is required"]},
     offers: [{type: Schema.Types.ObjectId, ref: "Offer"}], // Array of offer IDs
+    highestOffer: {type: Number, default: 0}, // Store the highest offer amount
     active: {type: Boolean, default: true}
 }, {timestamps: true});
 

@@ -69,17 +69,9 @@ exports.profile = (req, res) => {
         return res.redirect("/users/login");
     }
 
-    Promise.all([model.findById(req.session.user), Item.find({seller: req.session.user}), Offer.find({buyer: req.session.user})])
+    Promise.all([model.findById(req.session.user), Item.find({seller: req.session.user}), Offer.find({buyer: req.session.user}).populate("item", "image title condition price offers _id")])
     .then(results => {
         const [user, items, offers] = results;
-        if (offers.length > 0) {
-            offers.forEach(offer => {
-                offer.populate("item", "image title condition price offers")
-                .then(offer => { return offer })
-                .catch(err => { next(err) });
-            })
-        }
-
         res.render("users/profile", {user, items, offers});
     })
     .catch(err => { next(err) });

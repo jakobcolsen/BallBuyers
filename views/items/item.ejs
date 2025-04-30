@@ -12,8 +12,31 @@
                         <p class="item-offers"><%= item.offers.length %> offers</p>
                     </div>
                     <p class="item-price">$<%= item.price %></p>
-                    <p class="item-description"><%= item.details %></p>
-                    </div>
+                    <p class="item-description"><%= item.details %></p> 
+                    <% if (item.seller._id.toString() !== user && item.active) { %>
+                            <% if (offer !== null) { %>
+                                <form class="offer-form" action="/items/<%= item._id %>/offers/<%= offer.toString() %>?_method=PUT" method="POST">
+                                    <label for="offer-amount">Update Your Offer:</label>
+                                    <input type="number" id="offer-amount" name="amount" step="0.01" min="0" required>
+                                    <button class="offer-button" type="submit">Submit New Offer</button>
+                                </form>
+                                <form class="delete-form" action="/items/<%= item._id %>/offers/<%= offer.toString() %>?_method=DELETE" method="POST">
+                                    <button class="delete-offer-button" type="submit">Delete Offer</button>
+                                </form>
+                            <% } else { %>
+                                <form class="offer-form" action="/items/<%= item._id %>/offers" method="POST">
+                                    <label for="offer-amount">Make an Offer:</label>
+                                    <input type="number" id="offer-amount" name="amount" step="0.01" min="0" required>
+                                    <button class="offer-button" type="submit">Submit Offer</button>
+                                </form>
+                            <% } %>
+                    <% } %>
+                    <% if (item.highestOffer > 0 && item.active) { %>
+                        <p class="highest-offer">Highest Offer: $<%= item.highestOffer %></p>
+                    <% } else if (!item.active) { %>
+                        <p class="highest-offer">This item is no longer available.</p>
+                    <% } %>
+                </div>
             </article>
             <div class="browse">
                 <h3>Not what you were looking for?</h3>

@@ -3,6 +3,7 @@ const controller = require("../controllers/itemController");
 const { upload, onError } = require("../middleware/fileUpload");
 const { validateId } = require("../middleware/validator");
 const { isLoggedIn, isSeller } = require("../middleware/auth");
+const offerRouter = require("./offerRoutes");
 const router = express.Router();
 
 // Get all items
@@ -28,5 +29,7 @@ router.put("/:id", isLoggedIn, isSeller, upload, onError, validateId, controller
 
 // Delete item by id
 router.delete("/:id", isLoggedIn, isSeller, validateId, controller.delete);
+
+router.use("/:id/offers", validateId, offerRouter); // Router inception
 
 module.exports = router;

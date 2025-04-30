@@ -100,7 +100,7 @@ h4 {
 
 .yi-titlebar {
     display: grid;
-    grid-template-columns: minmax(150px, 800px) repeat(3, 150px);
+    grid-template-columns: minmax(150px, 400px) 150px 150px 400px;
     grid-template-areas: 
         "item offers status actions";
     gap: 1rem;
@@ -130,7 +130,7 @@ h4 {
     font-size: 20px;
     justify-content: center;
     display: grid;
-    grid-template-columns: minmax(150px, 800px) repeat(3, 150px);
+    grid-template-columns: minmax(150px, 400px) 150px 150px 400px;
     grid-template-areas: 
         "item-name item-offers item-status item-actions";
     grid-template-rows: auto;
@@ -201,6 +201,18 @@ h4 {
     cursor: pointer;
 }
 
+.inactive {
+    background-color: rgba(0, 0, 0, 0.7) !important;
+    border: 3px solid rgba(0, 0, 0, 0.7) !important;
+}
+
+.inactive:hover {
+    background-color: rgba(0, 0, 0, 0.7) !important;
+    color: white !important;
+    border: 3px solid rgba(0, 0, 0, 0.7) !important;
+    cursor: not-allowed !important;
+}
+
 @media screen and (max-width: 800px) {
     .item-card-container {
         flex-direction: column;
@@ -222,6 +234,10 @@ h4 {
 
     .yi-items {
         grid-template-columns: repeat(4, 1fr);
+    }
+
+    .yi-items button {
+        font-size: 12px;
     }
 
     h4 {

@@ -23,6 +23,11 @@
                     <form class="yi-actions">
                         <button class="yi-action" type="submit" formmethod="GET" formaction="/items/<%= item._id %>/edit">Edit</button>
                         <button class="yi-action" type="submit" formmethod="POST" formaction="/items/<%= item._id %>?_method=DELETE">Delete</button>
+                        <% if (item.offers.length > 0) { %>
+                            <button class="yi-action" type="submit" formmethod="GET" formaction="/items/<%= item._id %>/offers">View Offers</button>
+                        <% } else { %>
+                            <button class="yi-action inactive">No Offers</button>
+                        <% } %>
                     </form>
                 </div>
             <% }); %>
@@ -35,12 +40,12 @@
     <div class="item-card-container">
         <% if (offers.length > 0) { %>
             <% offers.forEach(offer => { %>
-                <a href="/"><div class="card">
+                <a href="/items/<%= offer.item._id %>"><div class="card">
                     <img src="<%= offer.item.image %>" class="card-image" alt="<% offer.item.title %>">
                     <p class="card-title"><%= offer.item.title %></p>
-                    <p class="card-condition"><%= offer.item.condition %>></p>
-                    <p class="card-price"><%= offer.item.price %></p>
-                    <p class="card-offers"><%= offers.length - 1 %> other offers</p>
+                    <p class="card-condition"><%= offer.item.condition %></p>
+                    <p class="card-price">$<%= offer.amount %></p>
+                    <p class="card-offers"><%= offer.status %></p>
                 </div></a>
             <% }); %>
         <% } else { %>

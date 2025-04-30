@@ -8,6 +8,7 @@ const mongoose = require("mongoose");
 require("dotenv").config();
 const itemRouter = require("./routes/itemRoutes");
 const userRouter = require("./routes/userRoutes");
+const offerRouter = require("./routes/offerRoutes");
 
 const app = express();
 let port = 3000;
@@ -51,6 +52,7 @@ app.get("/", (req, res) => {
 
 app.use("/items", itemRouter);
 app.use("/users", userRouter);
+app.use("/offers", offerRouter);
 
 app.use((req, res, next) => {
   let err = new Error(`The requested URL ${req.url} could not be found.`);
