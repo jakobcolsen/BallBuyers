@@ -24,9 +24,7 @@ exports.create = (req, res, next) => {
     let item = new model(req.body);
     item.seller = req.session.user;
 
-    if (req.file !== undefined) {
-        item.image = "/images/uploads/" + req.file.filename;
-    }
+    item.image = "/images/uploads/" + req.file.filename;
     
     item.save()
     .then(() => {

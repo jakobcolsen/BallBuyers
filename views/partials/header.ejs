@@ -32,13 +32,13 @@
             <div class="jumping-jack-flash">
                 <% if (error.length > 0) { %>
                     <% error.forEach(function(err) { %>
-                        <div class="error"><%= err %></div>
+                        <div class="error"><%= err %></div><br>
                     <% }) %>
                 <% } %>
         
                 <% if (success.length > 0) { %>
                     <% success.forEach(function(scs) { %>
-                        <div class="success"><%= scs %></div>
+                        <div class="success"><%= scs %></div><br>
                     <% }) %>
                 <% } %>
             </div>

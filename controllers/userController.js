@@ -37,11 +37,6 @@ exports.signup = (req, res) => {
 exports.register = (req, res, next) => {
     let user = new model(req.body);
 
-    if (req.body.password !== req.body.confirmPassword) {
-        req.flash("error", "Passwords do not match.");
-        return res.redirect("/users/new");
-    }
-
     user.save()
     .then(item => { 
         req.flash("success", "You are now registered and can log in.");

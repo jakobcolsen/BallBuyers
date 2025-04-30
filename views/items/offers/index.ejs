@@ -1,7 +1,7 @@
 <%- include ("../../partials/header") %>
 <link rel="stylesheet" href="/css/offer_index.css">
 <% let displayTitle = item.title.length > 20 ? item.title.substring(0, 23) + "..." : item.title; %>
-<h2>Offers for <%= displayTitle %></h2>
+<h2>Offers for <%- displayTitle %></h2>
 <% if (offers.length > 0) { %>
     <div class="offer-container">
         <div class="offer-titlebar">
